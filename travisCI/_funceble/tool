@@ -67,6 +67,42 @@ secondsBeforeTimeout=30
 # We log the date
 date > ${logOutput}
 
+
+################################# Update IANA ##################################
+# Update iana-domains-db
+#
+# @CalledBy installation
+################################################################################
+updateIANA()
+{
+    # We set the url where we get the needed informations
+    local ianaURL="https://www.iana.org/domains/root/db"
+    
+    # Temporary file
+    local curlIANA=/var/tmp/${funilrys}-iana
+    
+    # We delete old temporary files
+    rm funilrys* &> /dev/null
+    
+    # We get a copy of the page
+    curl -s ${ianaURL} -o ${curlIANA}
+    
+    while read -r line
+    do
+        # We get the valid domains extensions
+        regex="(\/domains\/root\/db\/)(.*)(\.html)"
+        
+        if [[ "${line}" =~ ${regex} ]]
+        then
+            # We put it into a temporary file
+            echo "${BASH_REMATCH[2]}" >> ${funilrys}_iana
+        fi
+    done < "${curlIANA}"
+    
+    # We move the generated file
+    mv ${funilrys}_iana iana-domains-db
+}
+
 ################################ checkVersion ##################################
 # This part is where we check the version
 #
@@ -490,6 +526,7 @@ scriptsWorkDir()
                 printf '\n'
             elif [[ "${executionType}" == 'production' ]]
             then
+                updateIANA
                 echo "${bold}${cyan}The production logic was successfully completed!${normal}"
                 echo "You can now distribute this repository."
                 printf '\n'
