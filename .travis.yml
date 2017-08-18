@@ -14,6 +14,12 @@ matrix:
 cache:
   - apt
 
+before_install:
+  - export TZ=Africa/Johannesburg
+  - sudo apt-get -y install expect
+  - sudo apt-get -y install whois
+  - sudo apt-get -y install dos2unix
+
 script:
   - bash .dev-tools/pre-deploy.sh
 
