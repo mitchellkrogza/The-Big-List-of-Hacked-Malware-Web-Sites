@@ -77,10 +77,10 @@ scriptContent=$(cat ${currentDir}${script} 2> ${logOutput})
 executionType='installation'
 
 # Default seconds before timeout
-secondsBeforeTimeout=3
+secondsBeforeTimeout=1
 
 # Version number
-versionNumber='dev-1.4.0+11'
+versionNumber='dev-1.4.0+12'
 ################################################################################
 # We log the date
 date > ${logOutput}
