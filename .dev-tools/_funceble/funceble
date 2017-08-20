@@ -132,7 +132,7 @@ regexCurrentDir='%%currentDir%%'
 regexIPv4='(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)'
 
 # HTTP Status code timeout
-secondsBeforeHTTPTimeout=5
+secondsBeforeHTTPTimeout=1
 
 # Default seconds before timeout
 secondsBeforeTimeout=1
@@ -153,7 +153,7 @@ travisAutoSaveMinutes=30
 splitFiles=false
 
 # Version number
-versionNumber='dev-1.4.0+68'
+versionNumber='dev-1.4.0+69'
 
 # IANA whois server. The following is there to give use the whois
 # host we have to call to get a (valid) response.
@@ -1203,7 +1203,7 @@ getHTTPCode(){
     if [[ ${httpCodeStatus} == true ]]
     then
         # We get the HTTP header
-        httpCode=$(curl --write-out %{http_code} --silent --output /dev/null ${domain}:80)
+        httpCode=$(timeout ${secondsBeforeHTTPTimeout} "curl --write-out %{http_code} --silent --output /dev/null ${domain}:80")
         
         # In case of timeout we print Unknown
         if [[ ${httpCode} == '' ]]
