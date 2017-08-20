@@ -80,7 +80,7 @@ executionType='installation'
 secondsBeforeTimeout=1
 
 # Version number
-versionNumber='dev-1.4.0+12'
+versionNumber='dev-1.4.0+13'
 ################################################################################
 # We log the date
 date > ${logOutput}
@@ -661,9 +661,27 @@ createDirectoriesAndFile(){
                 then
                     if [[ ! -f ${currentDir}${BASH_REMATCH[1]} ]]
                     then
-                        # If the file doesn't exist we create it and put it's
-                        # content in multiline format
-                        printf ${BASH_REMATCH[3]//$/\\n} > ${currentDir}${BASH_REMATCH[1]}
+                        local replaceWith='keep'
+                        
+                        if [[ -d ${currentDir}.git ]]
+                        then
+                            if [[ ! $(git remote show origin | grep funceble) != '' ]]
+                            then
+                                local output=${BASH_REMATCH[1]/gitignore/${replaceWith}}
+                                
+                                # If the file doesn't exist we create it and put it's
+                                # content in multiline format
+                                printf ${BASH_REMATCH[3]//$/\\n} > ${currentDir}${output}
+                            else
+                                # If the file doesn't exist we create it and put it's
+                                # content in multiline format
+                                printf ${BASH_REMATCH[3]//$/\\n} > ${currentDir}${BASH_REMATCH[1]}
+                            fi
+                        else
+                            # If the file doesn't exist we create it and put it's
+                            # content in multiline format
+                            printf ${BASH_REMATCH[3]//$/\\n} > ${currentDir}${BASH_REMATCH[1]}
+                        fi
                     else
                         continue
                     fi
@@ -779,6 +797,7 @@ scriptsWorkDir()
         then
             if [[ "${executionType}" == 'installation' ]]
             then
+                find "${currentDir}output" -name '.gitignore' -type f -exec rm {} \;
                 # We generate needed directories and files
                 createDirectoriesAndFile
                 echo "${bold}${cyan}The installation was successfully completed!${normal}"
