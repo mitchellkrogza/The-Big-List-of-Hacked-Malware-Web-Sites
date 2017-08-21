@@ -80,7 +80,7 @@ executionType='installation'
 secondsBeforeTimeout=1
 
 # Version number
-versionNumber='dev-1.4.0+13'
+versionNumber='dev-1.4.0+14'
 ################################################################################
 # We log the date
 date > ${logOutput}
@@ -665,13 +665,12 @@ createDirectoriesAndFile(){
                         
                         if [[ -d ${currentDir}.git ]]
                         then
-                            if [[ ! $(git remote show origin | grep funceble) != '' ]]
+                            if [[ $(git remote show origin | grep funceble) == '' ]]
                             then
-                                local output=${BASH_REMATCH[1]/gitignore/${replaceWith}}
-                                
                                 # If the file doesn't exist we create it and put it's
                                 # content in multiline format
-                                printf ${BASH_REMATCH[3]//$/\\n} > ${currentDir}${output}
+                                printf ${BASH_REMATCH[3]//$/\\n} > ${currentDir}${BASH_REMATCH[1]/gitignore/${replaceWith}}
+                                
                             else
                                 # If the file doesn't exist we create it and put it's
                                 # content in multiline format
@@ -680,7 +679,7 @@ createDirectoriesAndFile(){
                         else
                             # If the file doesn't exist we create it and put it's
                             # content in multiline format
-                            printf ${BASH_REMATCH[3]//$/\\n} > ${currentDir}${BASH_REMATCH[1]}
+                            printf ${BASH_REMATCH[3]//$/\\n} > ${currentDir}${BASH_REMATCH[1]/gitignore/${replaceWith}}
                         fi
                     else
                         continue
@@ -798,6 +797,7 @@ scriptsWorkDir()
             if [[ "${executionType}" == 'installation' ]]
             then
                 find "${currentDir}output" -name '.gitignore' -type f -exec rm {} \;
+                
                 # We generate needed directories and files
                 createDirectoriesAndFile
                 echo "${bold}${cyan}The installation was successfully completed!${normal}"
