@@ -89,7 +89,7 @@ travisAutoSaveCommitMessage='Funceble Test - Autosave'
 travisAutoSaveMinutes=35
 
 # Version number
-versionNumber='dev-1.4.0+20'
+versionNumber='dev-1.4.0+21'
 ################################################################################
 # We log the date
 date > ${logOutput}
@@ -804,7 +804,11 @@ scriptsWorkDir()
         then
             if [[ "${executionType}" == 'installation' ]]
             then
-                find "${currentDir}output" -name '.gitignore' -type f -exec rm {} \;
+                if [[ -d ${currentDir}.git && $(git remote show origin | grep funceble) == '' ]]
+                then
+                    # We delete all .gitignore in case we're not into a funceble "repository"
+                    find "${currentDir}output" -name '.gitignore' -type f -exec rm {} \;
+                fi
                 
                 # We generate needed directories and files
                 createDirectoriesAndFile
