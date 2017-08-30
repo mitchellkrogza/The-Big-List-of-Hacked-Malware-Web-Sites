@@ -94,7 +94,7 @@ stableVersion=false
 devVersion=true
 
 # Version number
-versionNumber='dev-1.4.0+25'
+versionNumber='dev-1.4.0+26'
 ################################################################################
 # We log the date
 date > ${logOutput}
@@ -1023,8 +1023,6 @@ update()
                 printf "  ${cyan}✔${normal}\n\n" && printf "  ✔\n" >> ${logOutput}
                 echo "${bold}${cyan}The update was successfully completed!${normal}"
                 printf '\n'
-                
-                exit 0
             else
                 # We log && print message
                 printf "  ${red}✘${normal}\n" && printf "  ✘\n" >> ${logOutput}
@@ -1034,7 +1032,6 @@ update()
         else
             # We log && print message
             printf "No need to update.\n" &&  printf "No need to update." >> ${logOutput}
-            exit 0
         fi
     fi
 }
