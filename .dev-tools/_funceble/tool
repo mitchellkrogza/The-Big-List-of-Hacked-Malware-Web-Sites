@@ -97,7 +97,7 @@ stableVersion=false
 devVersion=true
 
 # Version number
-versionNumber='dev-1.4.0+40'
+versionNumber='dev-1.4.0+41'
 ################################################################################
 # We log the date
 date > ${logOutput}
@@ -824,7 +824,13 @@ scriptsWorkDir()
                     # We delete all .gitignore
                     find "${currentDir}output" -name '.gitignore' -type f -exec rm {} \;
                 fi
-                # We generate needed directories and files
+                
+                local regexSkip='\[funceble\sskip\]|\[ci\sskip\]'
+                if [[ $(git log 2> /dev/null | head -12 | tail -2 | head -1) =~ ${regexSkip} ]]
+                then
+                    cleanOutput
+                fi
+                
                 updateIANA
                 createDirectoriesAndFile
                 
@@ -836,6 +842,7 @@ scriptsWorkDir()
                 cleanOutput
                 updateIANA
                 getListOfDirectoryToCreate
+                
                 echo "${bold}${cyan}The production logic was successfully completed!${normal}"
                 echo "You can now distribute this repository."
                 printf '\n'
