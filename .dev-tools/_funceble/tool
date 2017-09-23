@@ -97,7 +97,7 @@ stableVersion=false
 devVersion=true
 
 # Version number
-versionNumber='dev-1.4.0+41'
+versionNumber='dev-1.4.0+42'
 ################################################################################
 # We log the date
 date > ${logOutput}
@@ -917,6 +917,7 @@ checkVersion()
         # script
         quiet=true
         installation "${funilrys}"
+        quiet=false
     fi
     
     local downloadedFiles="${funilrys} ${funilrys}.tool"
