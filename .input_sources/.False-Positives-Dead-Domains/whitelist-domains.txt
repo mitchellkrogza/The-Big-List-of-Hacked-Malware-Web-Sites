@@ -92,6 +92,7 @@ microsoft.com
 money.cnn.com
 msftncsi.com
 m.weeklyad.target.com
+nbcsports.com
 nginx.org
 nine.plugins.plexapp.com
 node.plexapp.com
@@ -110,6 +111,7 @@ placeholdit.imgix.net
 plex.tv
 pricelist.skype.com
 products.office.com
+profootballtalk.nbcsports.com
 proxy02.pop.ord.plex.bz
 proxy.plex.bz
 proxy.plex.tv
