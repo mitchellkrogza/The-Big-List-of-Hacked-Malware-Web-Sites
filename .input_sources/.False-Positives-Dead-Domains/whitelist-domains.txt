@@ -85,6 +85,7 @@ freshwallpapers.info
 geckoandfly.com
 geo-prod.do.dsp.mp.microsoft.com
 gesangsunterricht-hh.de
+gist.github.com
 github.com
 gitlab.com
 g.live.com
@@ -177,6 +178,7 @@ s.gateway.messenger.live.com
 site5.com
 skyhook.sonarr.tv
 skype.com
+slack.com
 s.marketwatch.com
 spclient.wg.spotify.com
 spotify.com
