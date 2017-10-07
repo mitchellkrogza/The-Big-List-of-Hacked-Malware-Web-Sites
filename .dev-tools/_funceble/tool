@@ -97,7 +97,7 @@ stableVersion=false
 devVersion=true
 
 # Version number
-versionNumber='dev-1.4.0+42'
+versionNumber='dev-1.4.0+45'
 ################################################################################
 # We log the date
 date > ${logOutput}
@@ -373,6 +373,22 @@ expectInstalled()
     commandexist 'expect'
 }
 
+############################### head Installed #################################
+# We check if head is installed
+#
+# @CalledBy installation
+################################################################################
+headInstalled()
+{
+    if [[ ${quiet} == false ]]
+    then
+        # We log && print message
+        printf "${bold}head${normal} installed" && printf "head installed" >> ${logOutput}
+    fi
+    
+    commandexist 'head'
+}
+
 ############################### nslookup Installed ################################
 # We check if nslookup is installed
 #
@@ -436,6 +452,22 @@ tailInstalled()
     fi
     
     commandexist 'tail'
+}
+
+############################### touch Installed #################################
+# We check if touch is installed
+#
+# @CalledBy installation
+################################################################################
+touchInstalled()
+{
+    if [[ ${quiet} == false ]]
+    then
+        # We log && print message
+        printf "${bold}touch${normal} installed" && printf "touch installed" >> ${logOutput}
+    fi
+    
+    commandexist 'touch'
 }
 
 ################################# tr Installed #################################
@@ -538,8 +570,11 @@ cleanOutput(){
     # We set the directory we need to clean
     local output=${currentDir}output/
     
-    # We log && print message
-    printf "Cleaning generated files"
+    if [[ ${quiet} == false ]]
+    then
+        # We log && print message
+        printf "Cleaning generated files"
+    fi
     
     # Search and delete everything except .gitignore and .keep
     find ${output} ! -name '.gitignore' ! -name '.keep' -type f -exec rm {} \;
@@ -547,8 +582,11 @@ cleanOutput(){
     # Only for dev: We delete temporary files
     find ${currentDir} -name '*~' -type f -exec rm {} \;
     
-    # We log && print message
-    printf "  ${cyan}✔${normal}\n"
+    if [[ ${quiet} == false ]]
+    then
+        # We log && print message
+        printf "  ${cyan}✔${normal}\n"
+    fi
 }
 
 ########################## Get list of directory to create #####################
@@ -887,10 +925,12 @@ installation()
     dateInstalled
     echoInstalled
     expectInstalled
+    headInstalled
     nslookupInstalled
     sedInstalled
     sha512sumInstalled
     tailInstalled
+    touchInstalled
     trInstalled
     whoisInstalled
     
