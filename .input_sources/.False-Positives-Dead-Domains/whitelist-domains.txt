@@ -96,6 +96,7 @@ go4up.com
 goo.gl
 google-analytics.com
 google.com
+goo.ne.jp
 gravatar.com
 gravityscan.com
 help.ui.xboxlive.com
