@@ -6,6 +6,7 @@ ads.cnn.com
 ahrefs.com
 alluremedia.com.au
 amazon.com
+analytics.google.com
 android.clients.google.com
 api.ipify.org
 apple.com
@@ -154,6 +155,7 @@ ouo.io
 outlook.office365.com
 ow.ly
 pastebin.com
+piwik.org
 placehold.it
 placeholdit.imgix.net
 plex.tv
@@ -199,6 +201,7 @@ target.com
 t.co
 teamviewer.com
 tempest.disquscdn.com
+teslathemes.com
 themoviedb.com
 thesaurus.com
 thetvdb.com
