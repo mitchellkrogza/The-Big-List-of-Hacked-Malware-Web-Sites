@@ -10,6 +10,7 @@ analytics.google.com
 android.clients.google.com
 api.ipify.org
 apple.com
+appleid.apple.com
 app.plex.tv
 apps.skype.com
 apt.sonarr.tv
@@ -23,6 +24,7 @@ bgr.com
 bitbucket.com
 bit.ly
 bleacherreport.com
+blog.disqus.com
 businessinsider.com
 c.disquscdn.com
 cdn.optimizely.com
@@ -172,6 +174,7 @@ pubsub.plex.tv
 referrer.disqus.com
 res.cloudinary.com
 rover.ebay.com
+s3-1-w.amazonaws.com
 s3.amazonaws.com
 samsung.com
 sa.symcb.com
@@ -197,6 +200,7 @@ status.plex.tv
 suche.t-online.de
 s.youtube.com
 s.zkcdn.net
+tampermonkey.net
 target.com
 t.co
 teamviewer.com
