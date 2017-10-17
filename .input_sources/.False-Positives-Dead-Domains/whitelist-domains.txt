@@ -214,6 +214,7 @@ tinyurl.com
 title.auth.xboxlive.com
 tlc.com
 tomshardware.com
+torrentfreak.com
 tosiewytnie.pl
 track.hubspot.com
 travis-ci.com
