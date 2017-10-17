@@ -52,6 +52,7 @@ dl.delivery.mp.microsoft.com
 dl.dropbox.com
 dl.dropboxusercontent.com
 dl.google.com
+dlvr.it
 download.sonarr.tv
 drive.google.com
 dropbox.com
@@ -240,6 +241,7 @@ weebly.com
 weeklyad.target.com
 weeklyad.target.com.edgesuite.net
 widget-cdn.rpxnow.com
+widgets.dlvr.it
 wikia.com
 wikipedia.org
 windowsupdate.com
@@ -248,6 +250,7 @@ wordpress.org
 www.bit.ly
 www.disquscdn.com
 www.disqus.com
+www.dlvr.it
 www.google-analytics.com
 www.hubspot.com
 www.msftncsi.com
