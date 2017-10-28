@@ -13,6 +13,7 @@ android.clients.google.com
 api.ipify.org
 apple.com
 appleid.apple.com
+appleid.cdn-apple.com
 app.plex.tv
 apps.skype.com
 apt.sonarr.tv
@@ -121,6 +122,7 @@ help.ui.xboxlive.com
 homedepot.com
 hotmail.com
 hubspot.com
+idmsa.apple.com
 imagerator.disquscdn.com
 imagesak.secureserver.net
 imdb.com
@@ -176,6 +178,7 @@ pastebin.com
 piwik.org
 placehold.it
 placeholdit.imgix.net
+platform.instagram.com
 play.googleapis.com
 plex.tv
 pobieramy24.pl
@@ -279,6 +282,7 @@ wikipedia.org
 windowsupdate.com
 wordpress.com
 wordpress.org
+www.apple.com
 www.bit.ly
 www.disquscdn.com
 www.disqus.com
