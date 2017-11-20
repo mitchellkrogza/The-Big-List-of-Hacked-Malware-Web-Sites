@@ -41,6 +41,7 @@ blog.disqus.com
 bundler.watch.aetnd.com
 businessfinder.nj.com
 businessinsider.com
+cda.pl
 c.disquscdn.com
 cdn.embedly.com
 cdn.krxd.net
