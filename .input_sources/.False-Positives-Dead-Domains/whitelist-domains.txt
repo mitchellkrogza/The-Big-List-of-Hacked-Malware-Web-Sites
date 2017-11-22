@@ -137,10 +137,12 @@ goo.gl
 google-analytics.com
 googleapis.com
 google.com
+googletagmanager.com
 goo.ne.jp
 graph.facebook.com
 gravatar.com
 gravityscan.com
+gstatic.com
 help.ui.xboxlive.com
 homedepot.com
 hopx.cedexis.com
@@ -329,6 +331,7 @@ www.disqus.com
 www.dlvr.it
 www.google-analytics.com
 www.google.com
+www.googletagmanager.com
 www.googletagservices.com
 www.gstatic.com
 www.hubspot.com
