@@ -2,6 +2,7 @@
 106c06cd218b007d-b1e8a1331f68446599e96a4b46a050f5.ams.plex.services
 11.a.hulu.com
 1drv.ms
+a248.e.akamai.net
 abc.xyz
 ad.hulu.com
 a.disquscdn.com
@@ -12,6 +13,7 @@ ae-136.global.ssl.fastly.net
 ahrefs.com
 akamai.net
 alluremedia.com.au
+amazonaws.com
 amazon.com
 ameblo.jp
 analytics.google.com
@@ -20,6 +22,7 @@ api.ipify.org
 apple.com
 appleid.apple.com
 appleid.cdn-apple.com
+appletoolbox.com
 app.plex.tv
 apps.skype.com
 apt.sonarr.tv
@@ -28,6 +31,7 @@ attestation.xboxlive.com
 audible.com
 ax.phobos.apple.com.edgesuite.net
 bab.la
+banggood.com
 banners.spiceworks.com
 bbc.com
 beacon.walmart.com
@@ -72,6 +76,7 @@ dashboard.plex.tv
 db.local.clamav.net
 def-vef.xboxlive.com
 device.auth.xboxlive.com
+digg.com
 digitaltrends.com
 directvapplications.hb.omtrdc.net
 directvnow.com
@@ -90,6 +95,7 @@ dropbox.com
 dropboxusercontent.com
 dynupdate.no-ip.com
 ea.com
+e.akamai.net
 ec-ns.sascdn.com
 eds.xboxlive.com
 emby.media
@@ -125,6 +131,7 @@ fonts.gstatic.com
 footprint.net
 forums.sonarr.tv
 freshwallpapers.info
+gearbest.com
 geckoandfly.com
 gekko.spiceworks.com
 geo-prod.do.dsp.mp.microsoft.com
@@ -161,6 +168,7 @@ imdb.com
 imgs.xkcd.com
 imgur.com
 instagram.com
+ipv6.microsoft.com
 i.s-microsoft.com
 itunes.apple.com
 jdownloader.org
@@ -168,6 +176,7 @@ jebzdzidy.pl
 j.mp
 js-agent.newrelic.com
 js.maxmind.com
+j.tinyurl.com
 keystone.mwbsys.com
 licensing.xboxlive.com
 live.com
@@ -288,6 +297,7 @@ target.com
 t.co
 teamviewer.com
 tempest.disquscdn.com
+teredo.ipv6.microsoft.com
 teslathemes.com
 themoviedb.com
 thesaurus.com
@@ -341,6 +351,7 @@ www.bit.ly
 www.disquscdn.com
 www.disqus.com
 www.dlvr.it
+www.gearbest.com
 www.google-analytics.com
 www.google.com
 www.googletagmanager.com
@@ -352,6 +363,7 @@ www.msftncsi.com
 www.msftncsi.comtitle.mgt.xboxlive.com
 www.no-ip.com
 www.plex.tv
+www.tinyurl.com
 www.xboxlive.com
 xboxexperiencesprod.experimentation.xboxlive.com
 xbox.ipv6.microsoft.com
