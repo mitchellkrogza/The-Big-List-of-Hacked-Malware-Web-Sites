@@ -66,6 +66,7 @@ cloudfront.net
 cnn.com
 cpms35.spop10.ams.plex.bz
 cpms.spop10.ams.plex.bz
+crateandbarrel.com
 creative.ak.fbcdn.net
 crowdin.com
 crowdin.net
@@ -215,6 +216,7 @@ o1.email.plex.tv
 o2.sg0.plex.tv
 officeclient.microsoft.com
 openallurls.com
+openkatalog.com
 openlibrary.org
 ouo.io
 outlook.office365.com
@@ -241,6 +243,7 @@ proxy.plex.bz
 proxy.plex.tv
 pubsub.plex.bz
 pubsub.plex.tv
+pulsar.ebay.com
 px.spiceworks.com
 raw.githubusercontent.com
 referrer.disqus.com
