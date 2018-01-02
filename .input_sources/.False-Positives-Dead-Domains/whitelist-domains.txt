@@ -63,6 +63,7 @@ clients3.google.com
 clients4.google.com
 clients5.google.com
 cloudfront.net
+cnbc.com
 cnn.com
 cpms35.spop10.ams.plex.bz
 cpms.spop10.ams.plex.bz
@@ -99,6 +100,7 @@ ea.com
 e.akamai.net
 ec-ns.sascdn.com
 eds.xboxlive.com
+eku24.net
 emby.media
 emcdda.eu.int
 en.bab.la
