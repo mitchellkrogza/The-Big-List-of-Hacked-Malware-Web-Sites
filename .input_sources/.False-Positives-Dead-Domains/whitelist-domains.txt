@@ -4,6 +4,7 @@
 1drv.ms
 a248.e.akamai.net
 abc.xyz
+adguard.com
 ad.hulu.com
 a.disquscdn.com
 ads.betanews.com
@@ -65,6 +66,7 @@ clients5.google.com
 cloudfront.net
 cnbc.com
 cnn.com
+cognito-identity.us-east-1.amazonaws.com
 cpms35.spop10.ams.plex.bz
 cpms.spop10.ams.plex.bz
 crateandbarrel.com
@@ -104,6 +106,7 @@ eku24.net
 emby.media
 emcdda.eu.int
 en.bab.la
+entitlement.auth.adobe.com
 en.wikipedia.org
 eu.int
 external-lhr0-1.xx.fbcdn.net
