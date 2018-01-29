@@ -57,11 +57,17 @@ script='funceble'
 # The filename of the tool
 tool='tool'
 
+#The filename of IANA-domains-db
+ianaFile='iana-domains-db'
+
 # Script online version file
 onlineScript="https://raw.githubusercontent.com/${funilrys}/${script}/master/${script}"
 
 # Tool online version file
 onlineTool="https://raw.githubusercontent.com/${funilrys}/${script}/master/${tool}"
+
+# Online version of iana-domains-db
+onlineIANA="https://raw.githubusercontent.com/${funilrys}/${script}/master/${ianaFile}"
 
 # Directory structure file name
 directoriesStructureName=dir-structure
@@ -96,8 +102,11 @@ stableVersion=false
 # Enable the usage of the developement version of Funceble
 devVersion=true
 
+# This is the default server we use to get the domains Referer
+whoisServer="whois.iana.org"
+
 # Version number
-versionNumber='dev-1.4.0+46'
+versionNumber='dev-1.4.0+48'
 ################################################################################
 # We log the date
 date > ${logOutput}
@@ -777,8 +786,121 @@ updateIANA()
         
         if [[ "${line}" =~ ${regex} ]]
         then
+            
+            referer=$(whois -h "${whoisServer}" "hello.${BASH_REMATCH[2]}" | awk '/refer/{print $NF}')
+            
+            if [[ ${referer} == '' ]]
+            then
+                case ${BASH_REMATCH[2]} in
+                    aaa)
+                        referer='whois.nic.aaa'
+                    ;;
+                    abb)
+                        referer='whois.nic.abb'
+                    ;;
+                    able)
+                        referer='whois.nic.able'
+                    ;;
+                    accenture)
+                        referer='whois.nic.accenture'
+                    ;;
+                    aetna)
+                        referer='whois.nic.aetna'
+                    ;;
+                    aig)
+                        referer='whois.nic.aig'
+                    ;;
+                    americanexpress)
+                        referer='whois.nic.americanexpress'
+                    ;;
+                    amex)
+                        referer='whois.nic.amex'
+                    ;;
+                    amica)
+                        referer='whois.nic.amica'
+                    ;;
+                    amsterdam)
+                        referer='whois.nic.amsterdam'
+                    ;;
+                    analytics)
+                        referer='whois.nic.analytics'
+                    ;;
+                    aramco)
+                        referer='whois.nic.aramco'
+                    ;;
+                    athleta)
+                        referer='whois.nic.athleta'
+                    ;;
+                    audible)
+                        referer='whois.nic.audible'
+                    ;;
+                    author)
+                        referer='whois.nic.author'
+                    ;;
+                    bm)
+                        referer='whois.afilias-srs.net'
+                    ;;
+                    bz)
+                        referer='whois.afilias-grs.net'
+                    ;;
+                    buzz)
+                        referer='whois.nic.buzz'
+                    ;;
+                    cd)
+                        referer='chois.nic.cd'
+                    ;;
+                    cm)
+                        referer='whois.netcom.cm'
+                    ;;
+                    fj)
+                        referer='whois.usp.ac.fj'
+                    ;;
+                    ga)
+                        referer='whois.my.ga'
+                    ;;
+                    lc)
+                        referer='whois2.afilias-grs.net'
+                    ;;
+                    lk)
+                        referer='whois.nic.lk'
+                    ;;
+                    nyc)
+                        referer='whois.nic.nyc'
+                    ;;
+                    ps)
+                        referer='whois.pnina.ps'
+                    ;;
+                    ren)
+                        referer='whois.nic.ren'
+                    ;;
+                    rw)
+                        referer='whois.ricta.org.rw'
+                    ;;
+                    shop)
+                        referer='whois.nic.shop'
+                    ;;
+                    sl)
+                        referer='whois.nic.sl'
+                    ;;
+                    stream)${BASH_REMATCH[2]} ${referer}
+                        referer='whois.nic.stream'
+                    ;;
+                    tokyo)
+                        referer='whois.nic.tokyo'
+                    ;;
+                    uno)
+                        referer='whois.nic.uno'
+                    ;;
+                    za)
+                        referer='whois.registry.net.za'
+                    ;;
+                    *)
+                        referer='None'
+                    ;;
+                esac
+            fi
             # We put it into a temporary file
-            echo "${BASH_REMATCH[2]}" >> ${funilrys}_iana
+            echo "${BASH_REMATCH[2]} ${referer}" >> ${funilrys}_iana
         fi
     done < "${curlIANA}"
     
@@ -869,7 +991,6 @@ scriptsWorkDir()
                     cleanOutput
                 fi
                 
-                updateIANA
                 createDirectoriesAndFile
                 
                 echo "${bold}${cyan}The installation was successfully completed!${normal}"
@@ -878,7 +999,6 @@ scriptsWorkDir()
             elif [[ "${executionType}" == 'production' ]]
             then
                 cleanOutput
-                updateIANA
                 getListOfDirectoryToCreate
                 
                 echo "${bold}${cyan}The production logic was successfully completed!${normal}"
@@ -1028,10 +1148,15 @@ downloadScript()
         if [[ ${stableVersion} == true ]]
         then
             # We save the online script into a temporary file
-            curl -s ${onlineScript} -o "${funilrys}"
+            curl -s ${onlineScript/dev/master} -o "${funilrys}"
             
             # We save the online tool script into a temporary file
-            curl -s ${onlineTool/master/dev} -o "${funilrys}.tool"
+            curl -s ${onlineTool/dev/master} -o "${funilrys}.tool"
+            
+            # We save the online version of the iana-domains-db
+            curl -s ${onlineTool/dev/master} -o "${funilrys}.${ianaFile}"
+            mv "${funilrys}.${ianaFile}" ${ianaFile}
+            
             
             chmod +x ${funilrys}*
             
@@ -1046,6 +1171,10 @@ downloadScript()
             
             # We save the online tool script into a temporary file
             curl -s ${onlineTool/master/dev} -o "${funilrys}.tool"
+            
+            # We save the online version of the iana-domains-db
+            curl -s ${onlineTool/master/dev} -o "${funilrys}.${ianaFile}"
+            mv "${funilrys}.${ianaFile}" ${ianaFile}
             
             chmod +x ${funilrys}*
             
