@@ -106,7 +106,7 @@ devVersion=true
 whoisServer="whois.iana.org"
 
 # Version number
-versionNumber='dev-1.4.0+48'
+versionNumber='dev-1.4.0+49'
 ################################################################################
 # We log the date
 date > ${logOutput}
@@ -1154,7 +1154,7 @@ downloadScript()
             curl -s ${onlineTool/dev/master} -o "${funilrys}.tool"
             
             # We save the online version of the iana-domains-db
-            curl -s ${onlineTool/dev/master} -o "${funilrys}.${ianaFile}"
+            curl -s ${onlineIANA/dev/master} -o "${funilrys}.${ianaFile}"
             mv "${funilrys}.${ianaFile}" ${ianaFile}
             
             
@@ -1173,7 +1173,7 @@ downloadScript()
             curl -s ${onlineTool/master/dev} -o "${funilrys}.tool"
             
             # We save the online version of the iana-domains-db
-            curl -s ${onlineTool/master/dev} -o "${funilrys}.${ianaFile}"
+            curl -s ${onlineIANA/master/dev} -o "${funilrys}.${ianaFile}"
             mv "${funilrys}.${ianaFile}" ${ianaFile}
             
             chmod +x ${funilrys}*
