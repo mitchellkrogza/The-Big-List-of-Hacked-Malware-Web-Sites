@@ -63,7 +63,8 @@ class PyFunceble(object):
 
     def __init__(self, domain=None, file_path=None):
         if __name__ == '__main__':
-            self.file_path = None
+
+            CONFIGURATION['file_to_test'] = file_path
 
             if CONFIGURATION['travis']:
                 AutoSave().travis_permissions()
@@ -75,7 +76,6 @@ class PyFunceble(object):
                 CONFIGURATION['domain'] = domain.lower()
                 self.domain()
             elif file_path:
-                self.file_path = file_path
                 self.file()
 
             ExecutionTime('stop')
@@ -118,7 +118,7 @@ class PyFunceble(object):
                 regex_bypass,
                 return_data=False).match():
 
-            AutoSave(True)
+            AutoSave(True, is_bypass=True)
 
     @classmethod
     def print_header(cls):
@@ -156,18 +156,23 @@ class PyFunceble(object):
             else:
                 status = ExpirationDate().get()
 
-            if not CONFIGURATION['simple'] and self.file_path:
+            if not CONFIGURATION['simple'] and CONFIGURATION['file_to_test']:
                 if CONFIGURATION['inactive_database']:
                     if status == 'ACTIVE':
-                        Database(self.file_path).remove()
+                        Database().remove()
                     else:
-                        Database(self.file_path).add()
+                        Database().add()
 
-                AutoContinue().backup(self.file_path)
+                AutoContinue().backup()
 
                 if domain != last_domain:
                     AutoSave()
                 else:
+                    self.reset_counters()
+                    AutoContinue().backup()
+                    ExecutionTime('stop')
+                    Percentage().log()
+
                     AutoSave(True)
 
             CONFIGURATION['http_code'] = ''
@@ -313,7 +318,8 @@ class PyFunceble(object):
 
         return result
 
-    def _extract_domain_from_file(self):
+    @classmethod
+    def _extract_domain_from_file(cls):
         """
         This method extract all non commented lines.
 
@@ -323,13 +329,13 @@ class PyFunceble(object):
 
         result = []
 
-        if path.isfile(self.file_path):
-            with open(self.file_path) as file:
+        if path.isfile(CONFIGURATION['file_to_test']):
+            with open(CONFIGURATION['file_to_test']) as file:
                 for line in file:
                     if not line.startswith('#'):
                         result.append(line.rstrip('\n').strip())
         else:
-            raise FileNotFoundError(self.file_path)
+            raise FileNotFoundError(CONFIGURATION['file_to_test'])
 
         return result
 
@@ -341,7 +347,7 @@ class PyFunceble(object):
 
         list_to_test = self._extract_domain_from_file()
 
-        AutoContinue().restore(self.file_path)
+        AutoContinue().restore()
 
         if CONFIGURATION['adblock']:
             list_to_test = self.adblock_decode(list_to_test)
@@ -349,13 +355,13 @@ class PyFunceble(object):
         PyFunceble.Clean(list_to_test)
 
         if CONFIGURATION['inactive_database']:
-            Database(self.file_path).to_test()
+            Database().to_test()
 
-            if self.file_path in CONFIGURATION['inactive_db'] \
-                and 'to_test' in CONFIGURATION['inactive_db'][self.file_path] \
-                    and CONFIGURATION['inactive_db'][self.file_path]['to_test']:
+            if CONFIGURATION['file_to_test'] in CONFIGURATION['inactive_db'] \
+                and 'to_test' in CONFIGURATION['inactive_db'][CONFIGURATION['file_to_test']] \
+                    and CONFIGURATION['inactive_db'][CONFIGURATION['file_to_test']]['to_test']:
                 list_to_test.extend(
-                    CONFIGURATION['inactive_db'][self.file_path]['to_test'])
+                    CONFIGURATION['inactive_db'][CONFIGURATION['file_to_test']]['to_test'])
 
         regex_delete = r'localhost$|localdomain$|local$|broadcasthost$|0\.0\.0\.0$'
 
@@ -484,20 +490,16 @@ class AutoContinue(object):
                 Helpers.File(self.autocontinue_log_file).write(
                     str(self.backup_content))
 
-    def backup(self, file_path):
+    def backup(self):
         """
         Backup the current execution state.
-
-        Argument:
-            - file_path: str
-                The path of the currently tested file.
         """
 
         if CONFIGURATION['auto_continue']:
             data_to_backup = {}
             configuration_counter = CONFIGURATION['counter']['number']
 
-            data_to_backup[file_path] = {
+            data_to_backup[CONFIGURATION['file_to_test']] = {
                 "tested": configuration_counter['tested'],
                 "up": configuration_counter['up'],
                 "down": configuration_counter['down'],
@@ -511,14 +513,12 @@ class AutoContinue(object):
 
             Helpers.Dict(to_save).to_json(self.autocontinue_log_file)
 
-    def restore(self, file_to_restore):
+    def restore(self):
         """
         Restore data from the given path.
-
-        Argument:
-            - file_to_restore: str
-                The path to the file we are going to test.
         """
+
+        file_to_restore = CONFIGURATION['file_to_test']
 
         if CONFIGURATION['auto_continue'] and self.backup_content:
             if file_to_restore in self.backup_content:
@@ -549,11 +549,18 @@ class AutoContinue(object):
 class AutoSave(object):  # pylint: disable=too-few-public-methods
     """
     Logic behind autosave.
+
+    Arguments:
+        - is_last_domain: bool
+            Tell the autosave logic if we are at the end.
+        - is_bypass: bool
+            Tell the autosave logic if we are in bypass mode.
     """
 
-    def __init__(self, last_domain=False):
+    def __init__(self, is_last_domain=False, is_bypass=False):
         if CONFIGURATION['travis']:
-            self.last = last_domain
+            self.last = is_last_domain
+            self.bypass = is_bypass
             self._travis()
 
     @classmethod
@@ -598,19 +605,17 @@ class AutoSave(object):  # pylint: disable=too-few-public-methods
             time_autorisation = current_time >= int(
                 CONFIGURATION['start']) + (int(CONFIGURATION['travis_autosave_minutes']) * 60)
         except KeyError:
-            if self.last:
+            if self.last and not self.bypass:
                 raise Exception(
                     'Please review the way `ExecutionTime()` is called.')
-            else:
-                return
 
-        if self.last or time_autorisation:
+        if self.last or time_autorisation or self.bypass:
             Percentage().log()
             self.travis_permissions()
 
             command = 'git add --all && git commit -a -m "%s"'
 
-            if self.last:
+            if self.last or self.bypass:
                 if CONFIGURATION['command_before_end']:
                     Helpers.Command(
                         CONFIGURATION['command_before_end']).execute()
@@ -635,14 +640,10 @@ class Database(object):
     Logic behind the generation and the usage of a database system.
     The main idea behind this is to provide an inactive-db.json and test all
     inactive domain which are into to it regularly
-
-    Argument:
-        - file_path: str
-            The path to the file we are working with.
     """
 
-    def __init__(self, file_path):
-        self.file_path = file_path
+    def __init__(self):
+        self.file_path = CONFIGURATION['file_to_test']
         self.current_time = int(strftime('%s'))
         self.day_in_seconds = CONFIGURATION['days_between_db_retest'] * 24 * 3600
         self.inactive_db_path = CURRENT_DIRECTORY + \
@@ -1935,6 +1936,7 @@ class Referer(object):
 
             Helpers.File(
                 CURRENT_DIRECTORY +
+                OUTPUTS['parent_directory'] +
                 OUTPUTS['logs']['directories']['parent'] +
                 OUTPUTS['logs']['directories']['no_referer'] +
                 self.domain_extension).write(logs)
@@ -2502,6 +2504,9 @@ class DirectoryStructure(object):
         else:
             self.base = CURRENT_DIRECTORY
 
+        if not self.base.endswith(directory_separator):
+            self.base += directory_separator
+
         self.structure = self.base + OUTPUTS['default_files']['dir_structure']
 
         if production:
@@ -2551,21 +2556,74 @@ class DirectoryStructure(object):
             return False
         return True
 
+    def _update_structure_from_config(self, structure):
+        """
+        This method update the paths according to configs.
+
+        Argument:
+            - structure: dict
+                The readed structure.
+        """
+
+        to_replace_base = {
+            'output/': OUTPUTS['parent_directory']
+        }
+
+        # pylint: disable=line-too-long
+        to_replace = {
+            'HTTP_Analytic': OUTPUTS['http_analytic']['directories']['parent'],
+            'HTTP_Analytic/ACTIVE': OUTPUTS['http_analytic']['directories']['parent'] + OUTPUTS['http_analytic']['directories']['up'],
+            'HTTP_Analytic/POTENTIALLY_ACTIVE': OUTPUTS['http_analytic']['directories']['parent'] + OUTPUTS['http_analytic']['directories']['potentially_up'],
+            'HTTP_Analytic/POTENTIALLY_INACTIVE': OUTPUTS['http_analytic']['directories']['parent'] + OUTPUTS['http_analytic']['directories']['potentially_down'],
+            'domains': OUTPUTS['domains']['directory'],
+            'domains/ACTIVE': OUTPUTS['domains']['directory'] + STATUS['official']['up'] + directory_separator,
+            'domains/INACTIVE': OUTPUTS['domains']['directory'] + STATUS['official']['down'] + directory_separator,
+            'domains/INVALID': OUTPUTS['domains']['directory'] + STATUS['official']['invalid'] + directory_separator,
+            'hosts': OUTPUTS['hosts']['directory'],
+            'hosts/ACTIVE': OUTPUTS['hosts']['directory'] + STATUS['official']['up'] + directory_separator,
+            'hosts/INACTIVE': OUTPUTS['hosts']['directory'] + STATUS['official']['down'] + directory_separator,
+            'hosts/INVALID': OUTPUTS['hosts']['directory'] + STATUS['official']['invalid'] + directory_separator,
+            'logs': OUTPUTS['logs']['directories']['parent'],
+            'logs/date_format': OUTPUTS['logs']['directories']['parent'] + OUTPUTS['logs']['directories']['date_format'],
+            'logs/no_referer': OUTPUTS['logs']['directories']['parent'] + OUTPUTS['logs']['directories']['no_referer'],
+            'logs/percentage': OUTPUTS['logs']['directories']['parent'] + OUTPUTS['logs']['directories']['percentage'],
+            'logs/whois': OUTPUTS['logs']['directories']['parent'] + OUTPUTS['logs']['directories']['whois'],
+            'splited': OUTPUTS['splited']['directory'],
+        }
+        # pylint: enable=line-too-long
+
+        structure = Helpers.Dict(structure).rename_key(to_replace_base)
+        structure[OUTPUTS['parent_directory']] = Helpers.Dict(
+            structure[OUTPUTS['parent_directory']]).rename_key(to_replace)
+
+        try:
+            Helpers.Dict(structure).to_json(self.structure)
+        except FileNotFoundError:
+            mkdir(
+                directory_separator.join(
+                    self.structure.split(directory_separator)[
+                        :-1]))
+            Helpers.Dict(structure).to_json(self.structure)
+
+        return structure
+
     def _get_structure(self):
         """
-        This function return the structure we are goinng to work with.
+        This method return the structure we are goinng to work with.
         """
 
         structure_file = ''
         req = ''
+
         if path.isfile(self.structure):
             structure_file = self.structure
         elif path.isfile(self.base + 'dir_structure_production.json'):
             structure_file = self.base + 'dir_structure_production.json'
         else:
-            if CONFIGURATION['stable']:
-                req = requests.get(LINKS['dir_structure'])
-            else:
+            try:
+                if CONFIGURATION['stable']:
+                    req = requests.get(LINKS['dir_structure'])
+            except KeyError:
                 req = requests.get(
                     LINKS['dir_structure'].replace(
                         'master', 'dev'))
@@ -2573,43 +2631,12 @@ class DirectoryStructure(object):
         if structure_file.endswith('_production.json'):
             structure = Helpers.Dict().from_json(Helpers.File(structure_file).read())
 
-            to_replace_base = {
-                'output/': OUTPUTS['parent_directory']
-            }
-
-            # pylint: disable=line-too-long
-            to_replace = {
-                'HTTP_Analytic': OUTPUTS['http_analytic']['directories']['parent'],
-                'HTTP_Analytic/ACTIVE': OUTPUTS['http_analytic']['directories']['parent'] + OUTPUTS['http_analytic']['directories']['up'],
-                'HTTP_Analytic/POTENTIALLY_ACTIVE': OUTPUTS['http_analytic']['directories']['parent'] + OUTPUTS['http_analytic']['directories']['potentially_up'],
-                'HTTP_Analytic/POTENTIALLY_INACTIVE': OUTPUTS['http_analytic']['directories']['parent'] + OUTPUTS['http_analytic']['directories']['potentially_down'],
-                'domains': OUTPUTS['domains']['directory'],
-                'domains/ACTIVE': OUTPUTS['domains']['directory'] + STATUS['official']['up'] + directory_separator,
-                'domains/INACTIVE': OUTPUTS['domains']['directory'] + STATUS['official']['down'] + directory_separator,
-                'domains/INVALID': OUTPUTS['domains']['directory'] + STATUS['official']['invalid'] + directory_separator,
-                'hosts': OUTPUTS['hosts']['directory'],
-                'hosts/ACTIVE': OUTPUTS['hosts']['directory'] + STATUS['official']['up'] + directory_separator,
-                'hosts/INACTIVE': OUTPUTS['hosts']['directory'] + STATUS['official']['down'] + directory_separator,
-                'hosts/INVALID': OUTPUTS['hosts']['directory'] + STATUS['official']['invalid'] + directory_separator,
-                'logs': OUTPUTS['logs']['directories']['parent'],
-                'logs/date_format': OUTPUTS['logs']['directories']['parent'] + OUTPUTS['logs']['directories']['date_format'],
-                'logs/no_referer': OUTPUTS['logs']['directories']['parent'] + OUTPUTS['logs']['directories']['no_referer'],
-                'logs/percentage': OUTPUTS['logs']['directories']['parent'] + OUTPUTS['logs']['directories']['percentage'],
-                'logs/whois': OUTPUTS['logs']['directories']['parent'] + OUTPUTS['logs']['directories']['whois'],
-                'splited': OUTPUTS['splited']['directory'],
-            }
-            # pylint: enable=line-too-long
-
-            structure = Helpers.Dict(structure).rename_key(to_replace_base)
-            structure[OUTPUTS['parent_directory']] = Helpers.Dict(
-                structure[OUTPUTS['parent_directory']]).rename_key(to_replace)
-
-            Helpers.Dict(structure).to_json(self.structure)
-            return structure
+            return self._update_structure_from_config(structure)
         elif structure_file.endswith('.json'):
             return Helpers.Dict().from_json(Helpers.File(structure_file).read())
 
-        return Helpers.Dict().from_json(req.text)
+        return self._update_structure_from_config(
+            Helpers.Dict().from_json(req.text))
 
     @classmethod
     def _create_directory(cls, directory):
@@ -2632,8 +2659,6 @@ class DirectoryStructure(object):
         list_of_key = list(structure.keys())
         structure = structure[list_of_key[0]]
         parent_path = list_of_key[0] + directory_separator
-
-        self._create_directory(parent_path)
 
         for directory in structure:
             base = self.base + parent_path + directory + directory_separator
@@ -2681,7 +2706,7 @@ class Update(object):
     Update logic
     """
 
-    def __init__(self):
+    def __init__(self, path_update=False):
         self.destination = CURRENT_DIRECTORY + 'funilrys.'
         self.files = {
             'script': 'PyFunceble.py',
@@ -2691,6 +2716,12 @@ class Update(object):
             'config': 'config_production.yaml',
             'requirements': 'requirements.txt'
         }
+
+        self.path_update = path_update
+
+        if self.path_update:
+            self.files = Helpers.Dict(self.files).remove_key(
+                ['script', 'tool', 'requirements'])
 
         if path.isdir(
                 CURRENT_DIRECTORY +
@@ -2759,7 +2790,7 @@ class Update(object):
         Download the online version of PyFunceble and tool.
         """
 
-        if not CONFIGURATION['quiet']:
+        if not CONFIGURATION['quiet'] or self.path_update:
             print('\n Download of the scripts ')
 
         result = []
@@ -2786,7 +2817,7 @@ class Update(object):
             self.update_permission()
             return
 
-        if not CONFIGURATION['quiet']:
+        if not CONFIGURATION['quiet'] or self.path_update:
             print(
                 CONFIGURATION['done'] +
                 '\nImpossible to update PyFunceble.py. Please report issue.')
@@ -3290,33 +3321,73 @@ CURRENT_DIRECTORY = directory_separator.join(
     path.abspath(getsourcefile(lambda: 17))
     .split(directory_separator)[:-1]) + directory_separator
 
+CONFIGURATION = {}
 CURRENT_TIME = strftime("%a %d %b %H:%m:%S %Z %Y")
-CONFIGURATION = Helpers.Dict.from_yaml(
-    Helpers.File(
-        CURRENT_DIRECTORY +
-        'config.yaml').read())
+STATUS = {}
+OUTPUTS = {}
+HTTP_CODE = {}
+LINKS = {}
 
-for main_key in ['domains', 'hosts', 'splited']:
-    CONFIGURATION['outputs'][main_key]['directory'] = Helpers.Directory(
-        CONFIGURATION['outputs'][main_key]['directory']).fix_path()
 
-for main_key in ['http_analytic', 'logs']:
-    for key, value in CONFIGURATION['outputs'][main_key]['directories'].items(
-    ):
-        CONFIGURATION['outputs'][main_key]['directories'][key] = Helpers.Directory(
-            value).fix_path()
+def load_configuration(path_to_config):
+    """
+    This function will load config.yaml and update CONFIGURATION
 
-STATUS = CONFIGURATION['status']
-OUTPUTS = CONFIGURATION['outputs']
-HTTP_CODE = CONFIGURATION['http_codes']
-LINKS = CONFIGURATION['links']
+    Argument:
+        - path_to_config: str
+            The path to the config.yaml to read.
+    """
 
-CONFIGURATION.update({
-    'done': Fore.GREEN + '✔',
-    'error': Fore.RED + '✘'
-})
+    if not path_to_config.endswith(directory_separator):
+        path_to_config += directory_separator
 
-if not path.isdir(OUTPUTS['parent_directory']):
+    CONFIGURATION.update(Helpers.Dict.from_yaml(
+        Helpers.File(
+            path_to_config +
+            'config.yaml').read()))
+
+    for main_key in ['domains', 'hosts', 'splited']:
+        CONFIGURATION['outputs'][main_key]['directory'] = Helpers.Directory(
+            CONFIGURATION['outputs'][main_key]['directory']).fix_path()
+
+    for main_key in ['http_analytic', 'logs']:
+        for key, value in CONFIGURATION['outputs'][main_key]['directories'].items(
+        ):
+            CONFIGURATION['outputs'][main_key]['directories'][key] = Helpers.Directory(
+                value).fix_path()
+
+    CONFIGURATION['outputs']['main'] = Helpers.Directory(
+        CONFIGURATION['outputs']['main']).fix_path()
+
+    STATUS.update(CONFIGURATION['status'])
+    OUTPUTS.update(CONFIGURATION['outputs'])
+    HTTP_CODE.update(CONFIGURATION['http_codes'])
+    LINKS.update(CONFIGURATION['links'])
+
+    CONFIGURATION.update({
+        'done': Fore.GREEN + '✔',
+        'error': Fore.RED + '✘'
+    })
+
+    return True
+
+
+load_configuration(CURRENT_DIRECTORY)
+
+if OUTPUTS['main']:
+    CURRENT_DIRECTORY = OUTPUTS['main']
+
+    if not CURRENT_DIRECTORY.endswith(directory_separator):
+        CURRENT_DIRECTORY += directory_separator
+
+    if not path.isfile(CURRENT_DIRECTORY + OUTPUTS['default_files']['iana']):
+        Update(path_update=True)
+
+    if path.isfile(CURRENT_DIRECTORY + 'config.yaml'):
+        load_configuration(CURRENT_DIRECTORY)
+
+
+if not path.isdir(CURRENT_DIRECTORY + OUTPUTS['parent_directory']):
     DirectoryStructure()
 
 if __name__ == '__main__':
@@ -3633,7 +3704,7 @@ if __name__ == '__main__':
         '-v',
         '--version',
         action='version',
-        version='%(prog)s 0.51.0-beta'
+        version='%(prog)s 0.53.2-beta'
     )
 
     ARGS = PARSER.parse_args()
