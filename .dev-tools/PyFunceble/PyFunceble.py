@@ -2,29 +2,86 @@
 # -*- coding: utf-8 -*-
 
 """
-PyFunceble is the litle sister of Funceble (https://github.com/funilrys/funceble).
-Which is archived since March 13th 2018.
-Consider PyFunceble as a tool to check the status of a given domain name
-or IP.
+The tool to check domains or IP availability.
+
+
+██████╗ ██╗   ██╗███████╗██╗   ██╗███╗   ██╗ ██████╗███████╗██████╗ ██╗     ███████╗
+██╔══██╗╚██╗ ██╔╝██╔════╝██║   ██║████╗  ██║██╔════╝██╔════╝██╔══██╗██║     ██╔════╝
+██████╔╝ ╚████╔╝ █████╗  ██║   ██║██╔██╗ ██║██║     █████╗  ██████╔╝██║     █████╗
+██╔═══╝   ╚██╔╝  ██╔══╝  ██║   ██║██║╚██╗██║██║     ██╔══╝  ██╔══██╗██║     ██╔══╝
+██║        ██║   ██║     ╚██████╔╝██║ ╚████║╚██████╗███████╗██████╔╝███████╗███████╗
+╚═╝        ╚═╝   ╚═╝      ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝╚══════╝╚═════╝ ╚══════╝╚══════╝
+
+PyFunceble is the little sister of Funceble (https://github.com/funilrys/funceble)
+which was archived on March 13th, 2018.
+At the end of 2017, PyFunceble was described by one of its most active user as:
+"[an] excellent script for checking ACTIVE and INACTIVE domain names."
+
+Our main objective is to test domains and IP availability
+by generating an accurate result based on results from WHOIS, NSLOOKUP and
+HTTP status codes.
+As result, PyFunceble returns 3 status: ACTIVE, INACTIVE and INVALID.
+The denomination of those statuses can be changed under your personal
+`config.yaml`.
+
+At the time we write this, PyFunceble is running actively and daily under 50+
+Travis CI repository or process to test the availability of domains which are
+present into hosts files, AdBlock filter lists, list of IP, list of domains or
+blocklists.
+
+An up to date explanation of all status can be found at https://git.io/vxieo.
+You can also find a simple representation of the logic behind PyFunceble at
+https://git.io/vxifw.
+
+Author:
+    Nissar Chababy, @funilrys, contactTATAfunilrysTODTODcom
+
+Special thanks to:
+    Adam Warner - @PromoFaux
+    Mitchell Krog - @mitchellkrogza
+    Pi-Hole - @pi-hole
+    SMed79 - @SMed79
+
+Contributors:
+    Let's contribute to PyFunceble!!
+
+    Mitchell Krog - @mitchellkrogza
+    Odyseus - @Odyseus
+    WaLLy3K - @WaLLy3K
+    xxcriticxx - @xxcriticxx
+
+    The complete list can be found at https://git.io/vND4m
+
+Original project link:
+    https://github.com/funilrys/PyFunceble
+
+Original project wiki:
+    https://github.com/funilrys/PyFunceble/wiki
+
+License: MIT
+    MIT License
+
+    Copyright (c) 2017-2018 Nissar Chababy
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
 """
 
-#  _______           _______           _        _______  _______  ______
-# (  ____ )|\     /|(  ____ \|\     /|( (    /|(  ____ \(  ____ \(  ___ \ ( \      (  ____ \
-# | (    )|( \   / )| (    \/| )   ( ||  \  ( || (    \/| (    \/| (   ) )| (      | (    \/
-# | (____)| \ (_) / | (__    | |   | ||   \ | || |      | (__    | (__/ / | |      | (__
-# |  _____)  \   /  |  __)   | |   | || (\ \) || |      |  __)   |  __ (  | |      |  __)
-# | (         ) (   | (      | |   | || | \   || |      | (      | (  \ \ | |      | (
-# | )         | |   | )      | (___) || )  \  || (____/\| (____/\| )___) )| (____/\| (____/\
-# |/          \_/   |/       (_______)|/    )_)(_______/(_______/|/ \___/ (_______/(_______/
-
-# Written by: @Funilrys, Nissar Chababy <contact at funilrys dot com>
-# GitHub : https://github.com/funilrys/PyFunceble
-
-################################ Contributors ################################
-# - All contributors of https://github.com/funilrys/Funceble
-#
-# - Let's contribute to PyFunceble !
-##########################################################################
 # pylint: disable=too-many-lines,invalid-name
 import argparse
 import hashlib
@@ -80,6 +137,9 @@ class PyFunceble(object):
 
             ExecutionTime('stop')
             Percentage().log()
+
+            if domain:
+                self.colored_logo()
         else:
             CONFIGURATION['simple'] = CONFIGURATION['quiet'] = CONFIGURATION['no_files'] = True
             if domain:
@@ -168,10 +228,12 @@ class PyFunceble(object):
                 if domain != last_domain:
                     AutoSave()
                 else:
-                    self.reset_counters()
-                    AutoContinue().backup()
                     ExecutionTime('stop')
                     Percentage().log()
+                    self.reset_counters()
+                    AutoContinue().backup()
+
+                    self.colored_logo()
 
                     AutoSave(True)
 
@@ -198,6 +260,18 @@ class PyFunceble(object):
         return
 
     @classmethod
+    def colored_logo(cls):
+        """
+        This method print the colored logo based on global results.
+        """
+
+        if not CONFIGURATION['quiet']:
+            if CONFIGURATION['counter']['percentage']['up'] >= 50:
+                print(Fore.GREEN + PYFUNCEBLE_LOGO)
+            else:
+                print(Fore.RED + PYFUNCEBLE_LOGO)
+
+    @classmethod
     def _format_domain(cls, extracted_domain):
         """
         Format the extracted domain before passing it to the system.
@@ -210,35 +284,42 @@ class PyFunceble(object):
             The domain to test.
         """
 
-        tabs = '\t'
-        space = ' '
+        if not extracted_domain.startswith('#'):
 
-        tabs_position, space_position = (
-            extracted_domain.find(tabs), extracted_domain.find(space))
+            if '#' in extracted_domain:
+                extracted_domain = extracted_domain[:extracted_domain.find(
+                    '#')].strip()
 
-        if tabs_position > -1 and space_position > -1:
-            if space_position < tabs_position:
+            tabs = '\t'
+            space = ' '
+
+            tabs_position, space_position = (
+                extracted_domain.find(tabs), extracted_domain.find(space))
+
+            if tabs_position > -1 and space_position > -1:
+                if space_position < tabs_position:
+                    separator = space
+                else:
+                    separator = tabs
+            elif tabs_position > -1:
+                separator = tabs
+            elif space_position > -1:
                 separator = space
             else:
-                separator = tabs
-        elif tabs_position > -1:
-            separator = tabs
-        elif space_position > -1:
-            separator = space
-        else:
-            separator = ''
+                separator = ''
 
-        if separator:
-            splited_line = extracted_domain.split(separator)
+            if separator:
+                splited_line = extracted_domain.split(separator)
 
-            index = 1
-            while index < len(splited_line):
-                if splited_line[index]:
-                    break
-                index += 1
+                index = 1
+                while index < len(splited_line):
+                    if splited_line[index]:
+                        break
+                    index += 1
 
-            return splited_line[index]
-        return extracted_domain
+                return splited_line[index]
+            return extracted_domain
+        return ""
 
     @classmethod
     def _format_adblock_decoded(cls, to_format, result=None):
@@ -333,7 +414,9 @@ class PyFunceble(object):
             with open(CONFIGURATION['file_to_test']) as file:
                 for line in file:
                     if not line.startswith('#'):
-                        result.append(line.rstrip('\n').strip())
+                        result.append(
+                            cls._format_domain(
+                                line.rstrip('\n').strip()))
         else:
             raise FileNotFoundError(CONFIGURATION['file_to_test'])
 
@@ -363,7 +446,7 @@ class PyFunceble(object):
                 list_to_test.extend(
                     CONFIGURATION['inactive_db'][CONFIGURATION['file_to_test']]['to_test'])
 
-        regex_delete = r'localhost$|localdomain$|local$|broadcasthost$|0\.0\.0\.0$'
+        regex_delete = r'localhost$|localdomain$|local$|broadcasthost$|0\.0\.0\.0$|allhosts$|allnodes$|allrouters$|localnet$|loopback$|mcastprefix$'  # pylint: disable=line-too-long
 
         list_to_test = Helpers.List(
             Helpers.Regex(
@@ -2719,7 +2802,6 @@ class Update(object):
         self.destination = CURRENT_DIRECTORY + 'funilrys.'
         self.files = {
             'script': 'PyFunceble.py',
-            'tool': 'tool.py',
             'iana': OUTPUTS['default_files']['iana'],
             'dir_structure': 'dir_structure_production.json',
             'config': 'config_production.yaml',
@@ -2730,7 +2812,7 @@ class Update(object):
 
         if self.path_update:
             self.files = Helpers.Dict(self.files).remove_key(
-                ['script', 'tool', 'requirements'])
+                ['script', 'requirements'])
 
         if path.isdir(
                 CURRENT_DIRECTORY +
@@ -3337,6 +3419,15 @@ OUTPUTS = {}
 HTTP_CODE = {}
 LINKS = {}
 
+PYFUNCEBLE_LOGO = """
+██████╗ ██╗   ██╗███████╗██╗   ██╗███╗   ██╗ ██████╗███████╗██████╗ ██╗     ███████╗
+██╔══██╗╚██╗ ██╔╝██╔════╝██║   ██║████╗  ██║██╔════╝██╔════╝██╔══██╗██║     ██╔════╝
+██████╔╝ ╚████╔╝ █████╗  ██║   ██║██╔██╗ ██║██║     █████╗  ██████╔╝██║     █████╗
+██╔═══╝   ╚██╔╝  ██╔══╝  ██║   ██║██║╚██╗██║██║     ██╔══╝  ██╔══██╗██║     ██╔══╝
+██║        ██║   ██║     ╚██████╔╝██║ ╚████║╚██████╗███████╗██████╔╝███████╗███████╗
+╚═╝        ╚═╝   ╚═╝      ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝╚══════╝╚═════╝ ╚══════╝╚══════╝
+"""
+
 
 def load_configuration(path_to_config):
     """
@@ -3401,6 +3492,7 @@ if not path.isdir(CURRENT_DIRECTORY + OUTPUTS['parent_directory']):
 
 if __name__ == '__main__':
     initiate(autoreset=True)
+
     PARSER = argparse.ArgumentParser(
         description='A tool to check domains or IP availability \
         (ACTIVE, INACTIVE, INVALID). Also described as "[an] excellent \
@@ -3713,7 +3805,7 @@ if __name__ == '__main__':
         '-v',
         '--version',
         action='version',
-        version='%(prog)s 0.54.0-beta'
+        version='%(prog)s 0.58.3-beta'
     )
 
     ARGS = PARSER.parse_args()
@@ -3885,4 +3977,6 @@ if __name__ == '__main__':
     if ARGS.update:
         Update()
 
+    if not CONFIGURATION['quiet']:
+        print(Fore.YELLOW + PYFUNCEBLE_LOGO)
     PyFunceble(ARGS.domain, ARGS.file)
