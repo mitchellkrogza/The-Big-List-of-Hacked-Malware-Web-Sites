@@ -17,6 +17,8 @@ domain: ""
 filter: ""
 # Enable / disable the generation of the hosts file(s).
 generate_hosts: True
+# Enable / Disable the generation of a JSON format for the output
+generate_json: False
 # Say to the system if the header has been already printed or not.
 header_printed: False
 # Tell to the system to use the historical sorting instead of the alphabetical sorting.
@@ -24,7 +26,7 @@ hierarchical_sorting: False
 # Set the server to call to get the whois referer of a given element.
 iana_whois_server: whois.iana.org
 # Tell to the system to convert all domain to IDNA if possible.
-idna_conversion: True
+idna_conversion: False
 # Enable / Disable the usage of a database to store the INACTIVE and INVALID domain to retest overtime.
 inactive_database: True
 # Enable / Disable the output of every information of screen.
@@ -86,6 +88,10 @@ outputs:
   hosts:
     directory: hosts/
     filename: hosts
+
+  json:
+    directory: json/
+    filename: dump.json
 
   analytic:
     directories:
