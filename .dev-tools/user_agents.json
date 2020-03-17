@@ -2,7 +2,7 @@
     "chrome": {
         "linux": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.123 Safari/537.36",
         "macosx": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.4 (KHTML, like Gecko) Chrome/22.0.1229.94 Safari/537.4",
-        "win10": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2913.20 Safari/537.36"
+        "win10": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.62 Safari/537.36"
     },
     "edge": {
         "linux": null,
@@ -12,7 +12,7 @@
     "firefox": {
         "linux": "Mozilla/5.0 (X11; U; Linux x86_64; it; rv:1.8.1.2) Gecko/20060601 Firefox/54.0",
         "macosx": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:52.9) Gecko/20100101 Goanna/3.4 Firefox/52.9 ArcticFox/27.10.1",
-        "win10": "Mozilla/5.0 (U; Windows NT 10.0; en-US; Win64; x64; rv:72.0.2) Gecko/20100101 Firefox/72.0.2"
+        "win10": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:76.0) Gecko/20100101 Firefox/76.0"
     },
     "ie": {
         "linux": null,
