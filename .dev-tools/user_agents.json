@@ -1,6 +1,6 @@
 {
     "chrome": {
-        "linux": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36 RuxitSynthetic/1.0",
+        "linux": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.158 Safari/537.36",
         "macosx": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36",
         "win10": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.129 Safari/537.36"
     },
@@ -26,7 +26,7 @@
     },
     "safari": {
         "linux": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/538.1 (KHTML, like Gecko) svatek.ru Safari/538.1",
-        "macosx": "Mozilla/5.0 ( Macintosh; Intel Mac OS X 10_10_1 ) AppleWebKit/600.2.5 ( KHTML, like Gecko ) Version/8.0.2 Safari/600.2.5 ( compatible; CloudServerMarketSpider/1.0; +http://cloudservermarket.com/spider.html )",
+        "macosx": "Safari/13604.1.38.1.6 CFNetwork/887 Darwin/17.0.0",
         "win10": null
     }
 }
