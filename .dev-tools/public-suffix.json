@@ -5295,6 +5295,7 @@
         "casacam.net",
         "cdn77-ssl.net",
         "channelsdvr.net",
+        "clic2000.net",
         "cloudaccess.net",
         "cloudapp.net",
         "cloudeity.net",
@@ -7077,6 +7078,7 @@
         "fastvps.site",
         "lelux.site",
         "loginline.site",
+        "mintere.site",
         "platformsh.site"
     ],
     "sk": [
@@ -7138,6 +7140,9 @@
         "principe.st",
         "saotome.st",
         "store.st"
+    ],
+    "store": [
+        "shopware.store"
     ],
     "su": [
         "abkhazia.su",
