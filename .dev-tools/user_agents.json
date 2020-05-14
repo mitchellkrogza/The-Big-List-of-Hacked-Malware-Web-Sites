@@ -7,7 +7,7 @@
     "edge": {
         "linux": null,
         "macosx": null,
-        "win10": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/18.17763, Akamai"
+        "win10": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4137.0 Safari/537.36 Edg/84.0.512.0"
     },
     "firefox": {
         "linux": "Mozilla/5.0 (X11; openSUSE; Linux x86_64; rv:62.0) Gecko/20100101 Firefox/62.0",
