@@ -150,7 +150,9 @@
         "co.am",
         "com.am",
         "commune.am",
+        "neko.am",
         "net.am",
+        "nyaa.am",
         "org.am"
     ],
     "ao": [
@@ -168,6 +170,7 @@
         "netlify.app",
         "run.app",
         "telebit.app",
+        "vercel.app",
         "web.app",
         "wnext.app"
     ],
@@ -259,6 +262,16 @@
     ],
     "aw": [
         "com.aw"
+    ],
+    "ax": [
+        "be.ax",
+        "cat.ax",
+        "es.ax",
+        "eu.ax",
+        "gg.ax",
+        "mc.ax",
+        "us.ax",
+        "xy.ax"
     ],
     "az": [
         "biz.az",
@@ -731,6 +744,7 @@
         "int.ci",
         "md.ci",
         "net.ci",
+        "nl.ci",
         "or.ci",
         "org.ci",
         "presse.ci",
@@ -753,6 +767,7 @@
         "nom.cl"
     ],
     "cloud": [
+        "banzai.cloud",
         "linkyard.cloud",
         "magentosite.cloud",
         "on-rancher.cloud",
@@ -852,6 +867,9 @@
         "repl.co",
         "web.co"
     ],
+    "codes": [
+        "owo.codes"
+    ],
     "com": [
         "001www.com",
         "0emm.com",
@@ -882,7 +900,6 @@
         "barsyonline.com",
         "beta.bounty-full.com",
         "betainabox.com",
-        "bitballoon.com",
         "blogdns.com",
         "blogspot.com",
         "blogsyte.com",
@@ -1014,6 +1031,7 @@
         "gb.com",
         "geekgalaxy.com",
         "gentapps.com",
+        "gentlentapis.com",
         "getmyip.com",
         "giize.com",
         "githubusercontent.com",
@@ -1094,10 +1112,12 @@
         "issmarterthanyou.com",
         "jdevcloud.com",
         "jpn.com",
+        "kasserver.com",
         "kozow.com",
         "kr.com",
         "likes-pie.com",
         "likescandy.com",
+        "linodeobjects.com",
         "logoip.com",
         "loseyourip.com",
         "lpusercontent.com",
@@ -1119,7 +1139,6 @@
         "myvnc.com",
         "neat-url.com",
         "net-freaks.com",
-        "netlify.com",
         "nfshost.com",
         "no.com",
         "nodebalancer.linode.com",
@@ -1409,11 +1428,13 @@
     ],
     "dev": [
         "curv.dev",
+        "fly.dev",
         "iserv.dev",
         "lcl.dev",
         "loginline.dev",
         "platter-app.dev",
         "stg.dev",
+        "vercel.dev",
         "webhare.dev",
         "workers.dev"
     ],
@@ -1669,7 +1690,8 @@
         "edu.gl",
         "net.gl",
         "nom.gl",
-        "org.gl"
+        "org.gl",
+        "xx.gl"
     ],
     "gn": [
         "ac.gn",
@@ -1683,6 +1705,7 @@
         "cloud.goog"
     ],
     "gp": [
+        "app.gp",
         "asso.gp",
         "com.gp",
         "edu.gp",
@@ -1703,14 +1726,17 @@
         "discourse.group"
     ],
     "gt": [
+        "blog.gt",
         "com.gt",
+        "de.gt",
         "edu.gt",
         "gob.gt",
         "ind.gt",
         "mil.gt",
         "net.gt",
         "nom.gt",
-        "org.gt"
+        "org.gt",
+        "to.gt"
     ],
     "gu": [
         "com.gu",
@@ -1723,6 +1749,7 @@
         "web.gu"
     ],
     "gy": [
+        "be.gy",
         "co.gy",
         "com.gy",
         "edu.gy",
@@ -1759,6 +1786,7 @@
         "xn--zf0avx.hk"
     ],
     "hn": [
+        "cc.hn",
         "com.hn",
         "edu.hn",
         "gob.hn",
@@ -1938,6 +1966,7 @@
         "azurecontainer.io",
         "b-data.io",
         "backplaneapp.io",
+        "backyards.banzaicloud.io",
         "barsy.io",
         "basicserver.io",
         "boxfuse.io",
@@ -1978,6 +2007,7 @@
         "sandcats.io",
         "scapp.io",
         "shiftedit.io",
+        "shw.io",
         "spacekit.io",
         "stage.nodeart.io",
         "stolos.io",
@@ -4259,12 +4289,18 @@
         "sc.ke"
     ],
     "kg": [
+        "blog.kg",
         "com.kg",
         "edu.kg",
         "gov.kg",
+        "io.kg",
+        "jp.kg",
         "mil.kg",
         "net.kg",
-        "org.kg"
+        "org.kg",
+        "tv.kg",
+        "uk.kg",
+        "us.kg"
     ],
     "kh": [
         "kh"
@@ -4450,6 +4486,7 @@
         "ac.ls",
         "biz.ls",
         "co.ls",
+        "de.ls",
         "edu.ls",
         "gov.ls",
         "info.ls",
@@ -4505,7 +4542,11 @@
         "tm.mc"
     ],
     "md": [
-        "blogspot.md"
+        "at.md",
+        "blogspot.md",
+        "de.md",
+        "jp.md",
+        "to.md"
     ],
     "me": [
         "ac.me",
@@ -5285,6 +5326,7 @@
         "azurewebsites.net",
         "b.ssl.fastly.net",
         "barsy.net",
+        "bitbridge.net",
         "blackbaudcdn.net",
         "blogdns.net",
         "boomla.net",
@@ -5319,6 +5361,7 @@
         "dynu.net",
         "dynv6.net",
         "eating-organic.net",
+        "edgeapp.net",
         "endofinternet.net",
         "familyds.net",
         "fastlylb.net",
@@ -5381,6 +5424,7 @@
         "schokokeks.net",
         "scrapper-site.net",
         "se.net",
+        "seidat.net",
         "selfip.net",
         "sells-it.net",
         "senseering.net",
@@ -6244,7 +6288,8 @@
         "merseine.nu",
         "mine.nu",
         "nom.nu",
-        "shacknet.nu"
+        "shacknet.nu",
+        "uwu.nu"
     ],
     "nz": [
         "ac.nz",
@@ -6478,6 +6523,8 @@
         "sld.pa"
     ],
     "page": [
+        "pdns.page",
+        "plesk.page",
         "prvcy.page"
     ],
     "party": [
@@ -6764,6 +6811,9 @@
         "gov.pn",
         "net.pn",
         "org.pn"
+    ],
+    "porn": [
+        "indie.porn"
     ],
     "pr": [
         "ac.pr",
@@ -7061,6 +7111,7 @@
         "now.sh",
         "org.sh",
         "platform.sh",
+        "vxl.sh",
         "wedeploy.sh"
     ],
     "shop": [
@@ -7229,6 +7280,11 @@
         "co.sz",
         "org.sz"
     ],
+    "tc": [
+        "ch.tc",
+        "me.tc",
+        "we.tc"
+    ],
     "td": [
         "blogspot.td"
     ],
@@ -7303,12 +7359,14 @@
         "turen.tn"
     ],
     "to": [
+        "611.to",
         "com.to",
         "direct.quickconnect.to",
         "edu.to",
         "gov.to",
         "mil.to",
         "net.to",
+        "nyan.to",
         "org.to",
         "oya.to",
         "vpnplus.to"
@@ -7822,6 +7880,7 @@
         "web.ve"
     ],
     "vg": [
+        "at.vg",
         "nom.vg"
     ],
     "vi": [
@@ -7847,8 +7906,11 @@
         "pro.vn"
     ],
     "vu": [
+        "blog.vu",
         "com.vu",
+        "dev.vu",
         "edu.vu",
+        "me.vu",
         "net.vu",
         "org.vu"
     ],
