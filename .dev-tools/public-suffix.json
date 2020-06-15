@@ -1448,9 +1448,6 @@
         "cloudapps.digital",
         "london.cloudapps.digital"
     ],
-    "direct": [
-        "fastpanel.direct"
-    ],
     "dk": [
         "biz.dk",
         "blogspot.dk",
@@ -1996,6 +1993,7 @@
         "github.io",
         "gitlab.io",
         "hasura-app.io",
+        "hostyhosting.io",
         "hzc.io",
         "loginline.io",
         "lolipop.io",
@@ -7128,6 +7126,7 @@
     ],
     "si": [
         "blogspot.si",
+        "gitpage.si",
         "nom.si"
     ],
     "site": [
