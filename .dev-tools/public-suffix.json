@@ -739,10 +739,12 @@
         "4lima.ch",
         "blogspot.ch",
         "dnsking.ch",
+        "firenet.ch",
         "gotdns.ch",
         "lima-city.ch",
         "linkyard-cloud.ch",
-        "square7.ch"
+        "square7.ch",
+        "svc.firenet.ch"
     ],
     "ci": [
         "ac.ci",
@@ -5353,6 +5355,9 @@
         "azure-mobile.net",
         "azurewebsites.net",
         "b.ssl.fastly.net",
+        "bar0.net",
+        "bar1.net",
+        "bar2.net",
         "barsy.net",
         "bitbridge.net",
         "blackbaudcdn.net",
@@ -6998,11 +7003,13 @@
         "kustanai.ru",
         "landing.myjino.ru",
         "marine.ru",
+        "mcdir.ru",
         "mil.ru",
         "mordovia.ru",
         "msk.ru",
         "myjino.ru",
         "mytis.ru",
+        "na4u.ru",
         "nalchik.ru",
         "net.ru",
         "nov.ru",
@@ -7015,6 +7022,7 @@
         "test.ru",
         "vladikavkaz.ru",
         "vladimir.ru",
+        "vps.mcdir.ru",
         "vps.myjino.ru"
     ],
     "run": [
@@ -7408,6 +7416,7 @@
         "nyan.to",
         "org.to",
         "oya.to",
+        "rdv.to",
         "vpnplus.to"
     ],
     "top": [

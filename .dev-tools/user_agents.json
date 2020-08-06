@@ -2,7 +2,7 @@
     "chrome": {
         "linux": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chrom ium/79.0.3945.79 Chrome/79.0.3945.79 Safari/537.36",
         "macosx": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_22_79) AppleWebKit/531.74.11 (KHTML, like Gecko) Chrome/55.1.6288.1916 Safari/532.03 Edge/36.07380",
-        "win10": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2884.46 Safari/537.36"
+        "win10": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36 +@OPERATOR_CONTACT_URL@"
     },
     "edge": {
         "linux": null,
