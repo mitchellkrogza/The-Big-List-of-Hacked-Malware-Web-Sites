@@ -153,7 +153,8 @@
         "neko.am",
         "net.am",
         "nyaa.am",
-        "org.am"
+        "org.am",
+        "radio.am"
     ],
     "ao": [
         "co.ao",
@@ -296,6 +297,10 @@
         "mil.ba",
         "net.ba",
         "org.ba"
+    ],
+    "basketball": [
+        "aus.basketball",
+        "nz.basketball"
     ],
     "bb": [
         "biz.bb",
@@ -739,6 +744,7 @@
         "12hp.ch",
         "2ix.ch",
         "4lima.ch",
+        "appengine.flow.ch",
         "blogspot.ch",
         "dnsking.ch",
         "firenet.ch",
@@ -795,6 +801,7 @@
         "trafficplex.cloud",
         "urown.cloud",
         "vapor.cloud",
+        "vip.jelastic.cloud",
         "voorloper.cloud"
     ],
     "club": [
@@ -1186,6 +1193,7 @@
         "operaunite.com",
         "outsystemscloud.com",
         "ownprovider.com",
+        "paas.massivegrid.com",
         "pagefrontapp.com",
         "pages.wiardweb.com",
         "pagespeedmobilizer.com",
@@ -1599,6 +1607,7 @@
         "barsy.eu",
         "cloudns.eu",
         "diskstation.eu",
+        "jelastic.dogado.eu",
         "mycd.eu",
         "spdns.eu",
         "transurl.eu",
@@ -1624,7 +1633,9 @@
         "aland.fi",
         "blogspot.fi",
         "dy.fi",
+        "fi.cloudplatform.fi",
         "iki.fi",
+        "paas.datacenter.fi",
         "xn--hkkinen-5wa.fi"
     ],
     "financial": [
@@ -1647,6 +1658,13 @@
     ],
     "fk": [
         "fk"
+    ],
+    "fm": [
+        "com.fm",
+        "edu.fm",
+        "net.fm",
+        "org.fm",
+        "radio.fm"
     ],
     "football": [
         "of.football"
@@ -1683,6 +1701,8 @@
         "veterinaire.fr"
     ],
     "gd": [
+        "edu.gd",
+        "gov.gd",
         "nom.gd"
     ],
     "gdn": [
@@ -1968,7 +1988,8 @@
         "net.in",
         "nic.in",
         "org.in",
-        "res.in"
+        "res.in",
+        "web.in"
     ],
     "info": [
         "barrel-of-knowledge.info",
@@ -4516,6 +4537,9 @@
         "soc.lk",
         "web.lk"
     ],
+    "lol": [
+        "omg.lol"
+    ],
     "london": [
         "in.london",
         "of.london"
@@ -6536,6 +6560,7 @@
         "servegame.org",
         "si.eu.org",
         "sk.eu.org",
+        "small-web.org",
         "spdns.org",
         "ssl.origin.cdn77-secure.org",
         "stuff-4-sale.org",
@@ -6969,6 +6994,7 @@
     "ro": [
         "arts.ro",
         "blogspot.ro",
+        "co.ro",
         "com.ro",
         "firm.ro",
         "info.ro",
