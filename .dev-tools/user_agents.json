@@ -7,7 +7,7 @@
     "edge": {
         "linux": null,
         "macosx": null,
-        "win10": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; Tesseract/1.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36 Edg/84.0.522.61"
+        "win10": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; ServiceUI 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36 Edg/85.0.564.41"
     },
     "firefox": {
         "linux": "Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:80.0) Gecko/20100101 Firefox/80.0",
@@ -26,7 +26,7 @@
     },
     "safari": {
         "linux": "Mozilla/5.0 (Unknown; Linux x86_64) AppleWebKit/538.1 (KHTML, like Gecko) Safari/538.1",
-        "macosx": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3; en-US) AppleWebKit/601.3.4 (KHTML, like Gecko) Version/13.1.3 Safari/601.3.4",
+        "macosx": "Safari/11603.2.5 CFNetwork/760.6.5 Darwin/15.6.0 (x86_64)",
         "win10": null
     }
 }
