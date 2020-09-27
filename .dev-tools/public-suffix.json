@@ -1150,6 +1150,7 @@
         "jcloud.ik-server.com",
         "jdevcloud.com",
         "jpn.com",
+        "js.wpenginepowered.com",
         "kasserver.com",
         "kozow.com",
         "kr.com",
@@ -1529,7 +1530,9 @@
         "gov.dz",
         "net.dz",
         "org.dz",
-        "pol.dz"
+        "pol.dz",
+        "soc.dz",
+        "tm.dz"
     ],
     "earth": [
         "bzz.dapps.earth",
