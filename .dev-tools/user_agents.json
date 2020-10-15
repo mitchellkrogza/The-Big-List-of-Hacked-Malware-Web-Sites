@@ -7,7 +7,7 @@
     "edge": {
         "linux": null,
         "macosx": null,
-        "win10": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.0 Safari/537.36 Edg/87.0.664.0"
+        "win10": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36 Edge/12.246 JRiver_Internet_Reader/2.0 UPnP/1.0"
     },
     "firefox": {
         "linux": "Mozilla/5.0 (X11; Linux x86_64; rv:Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 IceCat/68.0) Gecko/20100101 Firefox/Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 IceCat/68.0",
