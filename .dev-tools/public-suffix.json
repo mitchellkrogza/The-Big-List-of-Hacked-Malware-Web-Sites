@@ -1366,7 +1366,6 @@
         "writesthisblog.com",
         "x.mythic-beasts.com",
         "xen.prgmr.com",
-        "xenapponazure.com",
         "xnbay.com",
         "yali.mythic-beasts.com",
         "yolasite.com",
@@ -1663,8 +1662,7 @@
         "storj.farm"
     ],
     "fashion": [
-        "of.fashion",
-        "on.fashion"
+        "of.fashion"
     ],
     "fi": [
         "aland.fi",
@@ -1678,9 +1676,6 @@
     ],
     "financial": [
         "co.financial"
-    ],
-    "fit": [
-        "ptplus.fit"
     ],
     "fj": [
         "ac.fj",
@@ -1703,9 +1698,6 @@
         "net.fm",
         "org.fm",
         "radio.fm"
-    ],
-    "football": [
-        "of.football"
     ],
     "fr": [
         "aeroport.fr",
@@ -4658,6 +4650,10 @@
     "management": [
         "router.management"
     ],
+    "marketing": [
+        "from.marketing",
+        "with.marketing"
+    ],
     "mc": [
         "asso.mc",
         "tm.mc"
@@ -4717,7 +4713,8 @@
         "yombo.me"
     ],
     "men": [
-        "for.men"
+        "for.men",
+        "repair.men"
     ],
     "menu": [
         "barsy.menu"
@@ -5472,7 +5469,6 @@
         "clic2000.net",
         "cloudaccess.net",
         "cloudapp.net",
-        "cloudeity.net",
         "cloudfront.net",
         "cloudfunctions.net",
         "cloudjiffy.net",
@@ -6482,7 +6478,8 @@
         "homelink.one",
         "onred.one",
         "service.one",
-        "staging.onred.one"
+        "staging.onred.one",
+        "under.one"
     ],
     "online": [
         "barsy.online"
@@ -6653,7 +6650,6 @@
         "twmail.org",
         "ufcfan.org",
         "uk.eu.org",
-        "uklugs.org",
         "us.eu.org",
         "us.org",
         "webhop.org",
@@ -7340,7 +7336,6 @@
         "sch.so"
     ],
     "space": [
-        "linkitools.space",
         "myfast.space",
         "uber.space",
         "xs4all.space"
@@ -8099,8 +8094,11 @@
         "net.vu",
         "org.vu"
     ],
+    "win": [
+        "that.win"
+    ],
     "work": [
-        "of.work",
+        "from.work",
         "to.work"
     ],
     "ws": [
