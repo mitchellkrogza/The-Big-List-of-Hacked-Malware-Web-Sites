@@ -1963,7 +1963,7 @@
     "id": [
         "ac.id",
         "biz.id",
-        "bloghp.id",
+        "bloger.id",
         "blogspot.co.id",
         "co.id",
         "desa.id",
@@ -2572,6 +2572,7 @@
     "je": [
         "co.je",
         "net.je",
+        "of.je",
         "org.je"
     ],
     "jm": [
