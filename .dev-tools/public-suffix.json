@@ -169,6 +169,7 @@
         "hasura.app",
         "loginline.app",
         "netlify.app",
+        "ondigitalocean.app",
         "platform0.app",
         "run.app",
         "telebit.app",
@@ -7122,6 +7123,7 @@
         "kalmykia.ru",
         "kustanai.ru",
         "landing.myjino.ru",
+        "lk3.ru",
         "marine.ru",
         "mcdir.ru",
         "mil.ru",
@@ -7137,6 +7139,7 @@
         "org.ru",
         "pp.ru",
         "pyatigorsk.ru",
+        "ra-ru.ru",
         "ras.ru",
         "spb.ru",
         "spectrum.myjino.ru",
@@ -7144,7 +7147,8 @@
         "vladikavkaz.ru",
         "vladimir.ru",
         "vps.mcdir.ru",
-        "vps.myjino.ru"
+        "vps.myjino.ru",
+        "zsew.ru"
     ],
     "run": [
         "development.run",
