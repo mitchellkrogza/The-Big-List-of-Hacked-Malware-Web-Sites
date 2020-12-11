@@ -108,7 +108,6 @@
 59jd.com
 59secondmedia.com
 64.22.100.95
-64.207.144.148
 66.147.244.210
 67.23.226.139
 68.171.49.151
@@ -128,6 +127,7 @@
 83.217.8.234
 83.217.11.191
 83.217.11.193
+83.220.172.182
 83.235.64.44
 84.19.170.244
 84.19.170.249
@@ -1026,7 +1026,6 @@ baiadoseixal.cm-seixal.pt
 bailamecuba.com
 baile518.com
 baitcalculator.com
-bajasae.grupos.usb.ve
 bajkowedekoracje.pl
 bajkowestokrotki.cba.pl
 bajwainstitutes.com
@@ -1385,12 +1384,10 @@ brainfreezeapp.com
 brambory.net
 branchjp.web.fc2.com
 brandactivators.be
-brandieburrillphotography.com
 brandingforbuyout.com
 brand-obuv.ru
 brandonadamsjewelry.com
 brand-online.eu
-brasconsult.ru
 brazelton.org
 brazztech.com
 bredabeckerle.com
@@ -2131,6 +2128,7 @@ delta5.homepage.t-online.de
 deltaclub.org
 deltasec.net
 delucaproperties.com
+demeter.pt
 deminico.com
 demisuganda.org
 demo.academia-moscow.ru
@@ -7480,7 +7478,6 @@ t-plesk.com
 tpllaw.com
 tqglobalservices.com
 traderinsight.com
-trade-unite.ru
 tradgardspartner.se
 tradinbow.com
 traditions-and-custom.com
@@ -8373,6 +8370,7 @@ www.kardborren.se
 www.katzenhaifischer.de
 www.kishazy.hu
 www.kottalgenealogy.com
+www.kpfu.ru
 www.kroyme.com
 www.kujunduskuur.com
 www.kuldkaru.ee
@@ -8585,7 +8583,6 @@ www.typhloshop.ru
 www.uasm.de
 www.unice.it
 www.unmutedbeauty.com
-www.upperlensmagazine.com
 www.urbani.com.au
 www.usku.home.ro
 www.vakantiehuisjeameland.nl
@@ -8686,7 +8683,6 @@ yelki.limitsiz.de
 yellowbox.co.za
 yellowstudio.pl
 yenerunver.com
-yeniyuzyillions.org
 yepi-games.net
 yes2malaysia.com
 yesitisqqq.com
