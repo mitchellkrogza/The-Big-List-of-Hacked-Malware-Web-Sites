@@ -384,7 +384,6 @@
         "org.bi"
     ],
     "biz": [
-        "bpl.biz",
         "cloudns.biz",
         "dscloud.biz",
         "dyndns.biz",
@@ -779,9 +778,6 @@
         "org.ci",
         "presse.ci",
         "xn--aroport-bya.ci"
-    ],
-    "city": [
-        "ng.city"
     ],
     "ck": [
         "!www.ck",
@@ -1222,6 +1218,7 @@
         "onza.mythic-beasts.com",
         "ooguy.com",
         "operaunite.com",
+        "orsites.com",
         "outsystemscloud.com",
         "ownprovider.com",
         "paas.hosted-by-previder.com",
@@ -1971,6 +1968,7 @@
         "blogspot.co.id",
         "co.id",
         "desa.id",
+        "flap.id",
         "forte.id",
         "go.id",
         "mil.id",
@@ -2052,9 +2050,6 @@
         "v-info.info",
         "webhop.info"
     ],
-    "ink": [
-        "ng.ink"
-    ],
     "int": [
         "eu.int"
     ],
@@ -2127,6 +2122,7 @@
         "utwente.io",
         "vaporcloud.io",
         "virtualserver.io",
+        "webthings.io",
         "wedeploy.io"
     ],
     "iq": [
@@ -4698,6 +4694,7 @@
         "its.me",
         "localhost.daplie.me",
         "loginto.me",
+        "lohmus.me",
         "mcpe.me",
         "myds.me",
         "nctu.me",
@@ -5542,6 +5539,7 @@
         "kicks-ass.net",
         "kinghost.net",
         "knx-server.net",
+        "krellian.net",
         "lon-1.paas.massivegrid.net",
         "lon-2.paas.massivegrid.net",
         "map.fastly.net",
@@ -6886,6 +6884,7 @@
         "sejny.pl",
         "sex.pl",
         "shop.pl",
+        "shoparena.pl",
         "sklep.pl",
         "sko.gov.pl",
         "skoczow.pl",
@@ -7195,13 +7194,11 @@
         "net.sc",
         "org.sc"
     ],
-    "school": [
-        "ng.school"
-    ],
     "science": [
         "ybo.science"
     ],
     "scot": [
+        "edu.scot",
         "gov.scot"
     ],
     "sd": [
@@ -8145,6 +8142,18 @@
         "xn--m3ch0j3a.xn--o3cw4h",
         "xn--o3cyx2a.xn--o3cw4h"
     ],
+    "xn--p1acf": [
+        "xn--41a.xn--p1acf",
+        "xn--80aaa0cvac.xn--p1acf",
+        "xn--90a1af.xn--p1acf",
+        "xn--90amc.xn--p1acf",
+        "xn--c1avg.xn--p1acf",
+        "xn--h1ahn.xn--p1acf",
+        "xn--h1aliz.xn--p1acf",
+        "xn--j1adp.xn--p1acf",
+        "xn--j1aef.xn--p1acf",
+        "xn--j1ael8b.xn--p1acf"
+    ],
     "xyz": [
         "blogsite.xyz",
         "crafting.xyz",
@@ -8155,6 +8164,9 @@
     ],
     "ye": [
         "ye"
+    ],
+    "yt": [
+        "org.yt"
     ],
     "za": [
         "ac.za",
