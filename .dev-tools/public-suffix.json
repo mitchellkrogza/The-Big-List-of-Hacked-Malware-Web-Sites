@@ -1361,6 +1361,7 @@
         "wafflecell.com",
         "withgoogle.com",
         "withyoutube.com",
+        "woltlab-demo.com",
         "workisboring.com",
         "wpdevcloud.com",
         "wpenginepowered.com",
@@ -1510,6 +1511,8 @@
     ],
     "dev": [
         "curv.dev",
+        "deno-staging.dev",
+        "deno.dev",
         "fly.dev",
         "gateway.dev",
         "iserv.dev",
