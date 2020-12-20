@@ -1329,6 +1329,7 @@
         "simple-url.com",
         "sinaapp.com",
         "skygearapp.com",
+        "smushcdn.com",
         "space-to-rent.com",
         "sphinx.mythic-beasts.com",
         "stackhero-network.com",
@@ -1365,6 +1366,8 @@
         "workisboring.com",
         "wpdevcloud.com",
         "wpenginepowered.com",
+        "wphostedmail.com",
+        "wpmucdn.com",
         "writesthisblog.com",
         "x.mythic-beasts.com",
         "xen.prgmr.com",
@@ -1900,7 +1903,9 @@
         "jele.host",
         "mircloud.host",
         "myfast.host",
-        "pcloud.host"
+        "pcloud.host",
+        "tempurl.host",
+        "wpmudev.host"
     ],
     "hosting": [
         "opencraft.hosting"
@@ -8162,7 +8167,6 @@
     "xyz": [
         "blogsite.xyz",
         "crafting.xyz",
-        "fhapp.xyz",
         "localzone.xyz",
         "telebit.xyz",
         "zapto.xyz"
