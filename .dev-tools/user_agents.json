@@ -11,7 +11,7 @@
     },
     "firefox": {
         "linux": "Mozilla/5.0 (Linux x86_64; en-US) Gecko/20130401 Firefox/82.4",
-        "macosx": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:6.0.2) Gecko/20100101 Firefox/6.0.2",
+        "macosx": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_0; en-US) Gecko/20100101 Firefox/74.7",
         "win10": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:84.0) Gecko/20100101 Firefox/84.0/8mqDiPuL-36"
     },
     "ie": {
